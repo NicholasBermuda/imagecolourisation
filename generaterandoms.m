@@ -6,7 +6,7 @@ function seededrand = generaterandoms(seed)
 % OUTPUTS
 %   seededrand: a random number generator made from the original seed
 
-% to use, call rng(seededrand)
+% to use, call rng(generaterandoms(seed)) or rng(seededrand)
 
 seededrand = rng(seed, 'simdTwister');
 
