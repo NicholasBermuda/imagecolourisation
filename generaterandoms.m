@@ -8,6 +8,10 @@ function seededrand = generaterandoms(seed)
 
 % to use, call rng(generaterandoms(seed)) or rng(seededrand)
 
+if ~exist('seed','var') % choose the default seed if one is not given
+    seed = 1;
+end
+
 seededrand = rng(seed, 'simdTwister');
 
 end
