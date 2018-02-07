@@ -6,6 +6,11 @@ function v = pickrandom(S,N)
 % OUTPUTS:
 %   v: length N array storing indices of chosen pixels
 
+% error checking
+if N > S(1)*S(2)
+    error('You must choose N smaller than total pixel count S(1)*S(2)!')
+end
+
 v = sub2ind(S,randi(S(1),[N 1]),randi(S(2),[N 1]));
 
 end

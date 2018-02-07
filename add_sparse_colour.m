@@ -9,7 +9,13 @@ function C = add_sparse_colour(A,B,p)
 %   C: A mostly greyscale image with RGB colour information in pixels `p`
 
 C = B; % deep-copy, automagically
-C(p) = A(p); % use p as a mask since it is a list of indices
+for i = 1:3
+    % now with 100% less indexing errors
+    Ai = A(:,:,i);
+    Ci = C(:,:,i);
+    Ci(p) = Ai(p); % use p as a mask since it is a list of indices
+    C(:,:,i) = Ci(:,:);
+end
 
 end
 
