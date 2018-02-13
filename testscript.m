@@ -15,7 +15,7 @@ s = rng(generaterandoms(1));
 
 % figure out the size of the image, number of pts to add colour to
 S = size(A(:,:,1));
-N = S(1)*S(2)/100; % add colour to one percent of the pixels
+N = round(S(1)*S(2)/100); % add colour to one percent of the pixels
 
 % pick some random pts, some grid pts
 p_rand = pickrandom(S,N);
@@ -32,10 +32,9 @@ params = [100; % sigma_1
           100; % sigma_2
           0.5; % p
           1; % phi_form_index
-          2e-4;]; % delta
+          1e-4;]; % delta
 
 % colourise the image, peek
-D = colourise(A,B,p_rand,params);
+D_rand = colourise(A,B,p_rand,params);
 % D_grid = colourise(K_D,N,delta,B,C);
-% TODO: THIS IMAGE TURNS OUT SUPER RED -- CALCULATION ERROR?
 figure; imshow(D_rand);
