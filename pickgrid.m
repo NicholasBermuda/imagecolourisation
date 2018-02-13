@@ -3,7 +3,7 @@ function v = pickgrid(S,N)
 % INPUTS:
 %   S: The size of the image to pick the grid from; a tuple (height, width)
 %   N: The number of points to have on the grid OR size of grid in the form
-%   (Nh, Nw)
+%      (Nh, Nw)
 % OUTPUTS:
 %   v: length N array storing indices of chosen pixels
 
@@ -33,6 +33,6 @@ gridw = round(linspace(1,S(2),Nw));
 coords = [gridh(:) gridw(:)];
 
 % convert coordinates to indices
-v = sub2ind(S,coords(:,1),coords(:,2));
+v = sub2ind(S,coords(:,2),coords(:,1));
 end
 
