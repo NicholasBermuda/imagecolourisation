@@ -11,7 +11,7 @@ function B = segment(B, k)
 Bg = double(B(:,:,1));
 
 % do the K means segmentation
-[Z,mu] = KmeansGREY(Bg,k);
+[Z,mu] = Kmeans(Bg,k);
 
 % replace pixels with their cluster mean
 Bg = mu(Z);
