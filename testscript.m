@@ -38,4 +38,3 @@ params = [100; % sigma_1
 D_rand = colourise(A,B,p_rand,x);
 % D_grid = colourise(A,B,p_grid,params);
 figure; imshow(D_rand);
-% figure; imshow(D_grid);
