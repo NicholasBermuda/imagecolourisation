@@ -3,7 +3,7 @@ clear; close all
 % functions interact with each other
 
 % import the picture, peek
-A = imread('tulips.jpg');
+A = imread('lake.png');
 figure; imshow(A);
 
 % make a greyscale copy, peek
@@ -15,7 +15,7 @@ s = rng(generaterandoms(1));
 
 % figure out the size of the image, number of pts to add colour to
 S = size(A(:,:,1));
-N = round(S(1)*S(2)/100); % add colour to one percent of the pixels
+N = round(2*S(1)*S(2)/100); % add colour to one percent of the pixels
 
 % pick some random pts, some grid pts
 p_rand = pickrandom(S,N);
@@ -33,8 +33,9 @@ params = [100; % sigma_1
           0.5; % p
           1; % phi_form_index
           1e-4;]; % delta
-
+%x =[20.8549;594.4899;1.0011;1;1.5173e-07];
 % colourise the image, peek
-D_rand = colourise(A,B,p_rand,params);
-% D_grid = colourise(K_D,N,delta,B,C);
+D_rand = colourise(A,B,p_rand,x);
+% D_grid = colourise(A,B,p_grid,params);
 figure; imshow(D_rand);
+% figure; imshow(D_grid);
