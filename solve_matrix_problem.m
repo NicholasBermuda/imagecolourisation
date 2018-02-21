@@ -24,7 +24,7 @@ for s = 1:3 % find a_s for each colour separately
 end
 
 [colourised, bad_fraction, outlier_count] = check_range(colourised);
-outlier_count
+outlier_count;
 colourised = uint8(colourised);
 
 end

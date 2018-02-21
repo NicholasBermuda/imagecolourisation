@@ -1,4 +1,4 @@
-function colourised = colourise(A,B,pixels,params)
+function colourised = colourise(A,B,pixels,rbf,params)
 %colourise Recolourises a greyscale image `B` given colour info from rgb
 %image `A` at index locations `p`
 % INPUTS:
@@ -10,6 +10,8 @@ function colourised = colourise(A,B,pixels,params)
 %           type double except phi_form_name which is type str
 % OUTPUTS:
 %   colourised: array containing reconstructed rgb image
+
+params = [params(1:3); rbf; params(4)];
 
 [~, K_mat, K_s] = make_K_s(A,B,pixels,params);
 

@@ -1,4 +1,4 @@
-function optimal_params = optimise(A,B,pixels,p,params)
+function optimal_params = optimise(A,B,pixels,p,rbf,params,MaxFuncEvals)
 %optimise Finds the optimal set of parameters
 % INPUTS:
 %   A: the full colour image
@@ -9,15 +9,11 @@ function optimal_params = optimise(A,B,pixels,p,params)
 % OUTPUTS:
 %   optimal_params: parameters that minimise the image error
 
-optimal_params = fminsearch(@cost_function, params);
+myoptions = optimset('TolFun',1e-3,'TolX',1e-3,'Display', 'iter', 'MaxFunEvals',MaxFuncEvals,'MaxIter',MaxFuncEvals,'PlotFcns',@optimplotfval);
+optimal_params = fminsearch(@cost_function,params,myoptions);
 
     function cost = cost_function(params)
-        % we must only pick phi from the specified RBFs
-        if ~(params(4) == 1 || params(4) == 2)
-            cost = inf;
-        else % find the image error from colourising with these params
-            cost = imageerror(A, colourise(A, B, pixels, params), p);
-        end
+        cost = imageerror(A, colourise(A, B, pixels,rbf,params), p);
     end
                
 end
