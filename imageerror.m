@@ -29,7 +29,7 @@ err = 0;
 
 % vectorised sum in each colour
 for s = 1:3
-    innersum = (sum(sum(A(:,:,s) - D(:,:,s)))/N)^(1/p);
+    innersum = (sum(sum((A(:,:,s) - D(:,:,s))^p))/N)^(1/p);
     err = err + rule(s)*innersum;
 end
 

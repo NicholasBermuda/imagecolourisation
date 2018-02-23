@@ -37,12 +37,13 @@ params = [100; % sigma_1
 %params = [20.8549;594.4899;1.0011;1.5173e-07];
 
 % feb 21 opt of gaussian (see .mat file for others)
-params = [25.715;332.5164;0.9515;3.6849e-07]; % 1% grid and food.png
-params = [18.2521;444.179;0.9905;3.8794e-07]; % 2% grid and food.png
+%params = [25.715;332.5164;0.9515;3.6849e-07]; % 1% grid and food.png
+%params = [18.2521;444.179;0.9905;3.8794e-07]; % 2% grid and food.png
 
 load 'optimalparammatrix.mat' optimalparammatrix
 % column 1 is optimal for 0.25%, then 0.5%,... 4%.
 
+params = optimalparammatrix(:,4);
 rbf=1; % phi_form_index (1 for gaussian, 2 for cpt)
 
 % colourise the image, peek
@@ -55,9 +56,9 @@ figure; imshow(D_grid);
 %optimal_params = optimise(A,B,p_rand,2,rbf,params,50)
 %optimal_params = optimise(A,B,p_grid,2,rbf,params,20)
 
-%percents = [0.25, 0.5, 1, 2, 4];
+percents = [0.25, 0.5, 1, 2, 4];
 %bestguesses = [params,params,params,params,params]; % if you know nothing
-load 'optimalparammatrix.mat' optimalparammatrix
+%load 'optimalparammatrix.mat' optimalparammatrix
 %bestguesses = optimalparammatrix; % if you've done it before and want to optimize from there
 %optimalparammatrix = optimalparamvariation(A,B,2,rbf,params,percents,'grid',10,bestguesses)
 %toc
